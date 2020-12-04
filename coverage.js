@@ -1,6 +1,6 @@
-const Finance = require("financejs")
-
 const computePV = require("./computePV")
+
+const costArray = require("./input")
 
 const equityRate = 10
 const proRate = 7
@@ -19,50 +19,16 @@ const equityPeriod = 19
 //year10 - year19 7%    [9-18]
 //year 20 -             [19-length]
 
-const costArray = [
-	10488,
-	10750.8,
-	8461.708,
-	8663.71924,
-	8858.113917,
-	9072.017335,
-	9278.600055,
-	9505.118056,
-	9724.632898,
-	9964.531885,
-	10197.76824,
-	10451.86129,
-	10699.65663,
-	10968.80633,
-	11232.04912,
-	11517.17059,
-	11796.80341,
-	12098.86751,
-	12395.89033,
-	12715.92704,
-	13031.40076,
-	8905.795807,
-	9106.904681,
-	9328.271821,
-	9541.994076,
-	9776.413898,
-	10003.51952,
-	10251.7851,
-	10493.09095,
-	10756.04368,
-	11012.41639,
-	11290.94888,
-	11563.30785,
-	11858.36709,
-	12147.6877,
-	12460.27833,
-	12767.59538
-]
 const cashArray = []
 const moneyArray = []
 const fourArray = []
 const sevenArray = []
 const tenArray = []
+
+// for (let i = 0; i < costArray.length; i++) {
+// 	const reduce
+
+// }
 
 for (let i = 0; i < costArray.length; i++) {
 	if (i <= 2) {
