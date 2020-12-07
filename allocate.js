@@ -14,13 +14,6 @@ const {
 	equityPeriod
 } = require("./constants/periods")
 
-//[0,1,2,3,4,5,6,7]
-//year1 - year3 cash    [0,2]
-//year4 - 2%            [3]
-//year5 - year9 4%      [4-8]
-//year10 - year19 7%    [9-18]
-//year 20 -             [19-length]
-
 const {
 	cashArray,
 	moneyArray,
