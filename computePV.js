@@ -1,4 +1,5 @@
 const Finance = require("financejs")
+const level2PV = require("./level2PV")
 const finance = new Finance()
 
 module.exports = function computePV(costs, period, rate) {
@@ -15,9 +16,9 @@ module.exports = function computePV(costs, period, rate) {
 		const pv = fv * (1 / Math.pow(1 + rate / 100, period))
 		return pv
 	} else {
-		const [initial] = costs.splice(0, 1) //returns element 0 & mutates array
-		const npv = finance.NPV.apply(null, [rate, 0, ...costs])
-		const fv = initial + npv
+		// const [initial] = costs.splice(0, 1) //returns element 0 & mutates array
+		// const npv = finance.NPV.apply(null, [rate / 2, 0, ...costs])
+		const fv = level2PV(costs, rate)
 		const pv = fv * (1 / Math.pow(1 + rate / 100, period))
 		return pv
 	}

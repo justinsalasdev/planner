@@ -1,7 +1,17 @@
-const computePV = require("./computePV")
+//age
+//retirement age
+//life expectancy
+// freedomAge
 
-const array = [1, 2, 3, 4, 5]
-const period = 5
-const rate = 5
+//cost Array [age --> life expectancy]
+//current [0]
+//end [array.length - 1]
 
-computePV(array, period, rate)
+//
+
+//expense
+//starting age
+//ending age
+//generic frequency
+//
+//custom
