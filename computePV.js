@@ -1,4 +1,4 @@
-const level2PV = require("./level2PV")
+const allocate2 = require("./allocate2")
 
 module.exports = function computePV(costs, period, rate) {
 	const size = costs.length
@@ -16,7 +16,7 @@ module.exports = function computePV(costs, period, rate) {
 	} else {
 		// const [initial] = costs.splice(0, 1) //returns element 0 & mutates array
 		// const npv = finance.NPV.apply(null, [rate / 2, 0, ...costs])
-		const fv = level2PV(costs, rate)
+		const fv = allocate2(costs, rate)
 		const pv = fv * (1 / Math.pow(1 + rate / 100, period))
 		return pv
 	}

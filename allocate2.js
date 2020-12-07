@@ -1,7 +1,5 @@
-const Finance = require("financejs")
 const partitionCosts = require("./partitionCosts")
 const computePV2 = require("./computePV2")
-const finance = new Finance()
 const {
 	equityRate,
 	proRate,
@@ -15,7 +13,7 @@ const {
 	equityPeriod
 } = require("./constants/periods")
 
-module.exports = function level2PV(costs, rate) {
+module.exports = function allocate2(costs, rate) {
 	const {
 		cashArray,
 		moneyArray,
