@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "main": "coverage.js",
   "dependencies": {
-    "financejs": "^4.1.0",
     "tvm-financejs": "^0.3.0"
   },
   "devDependencies": {},
