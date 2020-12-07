@@ -1,13 +1,18 @@
 const computePV = require("./computePV")
-const costArray = require("./input")
+const annualExpenses = require("./constants/annualExpenses")
 const partitionCosts = require("./partitionCosts")
-const { equityRate, proRate, bondRate, moneyRate } = require("./rates")
+const {
+	equityRate,
+	proRate,
+	bondRate,
+	moneyRate
+} = require("./constants/rates")
 const {
 	moneyPeriod,
 	bondPeriod,
 	proPeriod,
 	equityPeriod
-} = require("./periods")
+} = require("./constants/periods")
 
 //[0,1,2,3,4,5,6,7]
 //year1 - year3 cash    [0,2]
@@ -22,7 +27,7 @@ const {
 	fourArray,
 	sevenArray,
 	tenArray
-} = partitionCosts(costArray)
+} = partitionCosts(annualExpenses)
 
 console.log("cash", cashArray.length)
 console.log("money", moneyArray.length)

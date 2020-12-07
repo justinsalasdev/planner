@@ -1,13 +1,19 @@
 const Finance = require("financejs")
 const partitionCosts = require("./partitionCosts")
+const computePV2 = require("./computePV2")
 const finance = new Finance()
-const { equityRate, proRate, bondRate, moneyRate } = require("./rates")
+const {
+	equityRate,
+	proRate,
+	bondRate,
+	moneyRate
+} = require("./constants/rates")
 const {
 	moneyPeriod,
 	bondPeriod,
 	proPeriod,
 	equityPeriod
-} = require("./periods")
+} = require("./constants/periods")
 
 module.exports = function level2PV(costs, rate) {
 	const {
@@ -25,10 +31,10 @@ module.exports = function level2PV(costs, rate) {
 	console.log("10", tenArray.length)
 
 	const cashPV = (cashArray[0] || 0) + (cashArray[1] || 0) + (cashArray[2] || 0)
-	const moneyPV = computePV(moneyArray, moneyPeriod, moneyRate)
-	const bondPV = computePV(fourArray, bondPeriod, bondRate)
-	const proPV = computePV(sevenArray, proPeriod, proRate)
-	const equityPV = computePV(tenArray, equityPeriod, equityRate)
+	const moneyPV = computePV2(moneyArray, moneyPeriod, moneyRate)
+	const bondPV = computePV2(fourArray, bondPeriod, bondRate)
+	const proPV = computePV2(sevenArray, proPeriod, proRate)
+	const equityPV = computePV2(tenArray, equityPeriod, equityRate)
 	const round2 = money => money.toFixed(2)
 
 	const coverage = cashPV + moneyPV + bondPV + proPV + equityPV
@@ -46,26 +52,4 @@ module.exports = function level2PV(costs, rate) {
 	)
 
 	return coverage
-}
-
-function computePV(costs, period, rate) {
-	const size = costs.length
-	//rate not in %
-	if (size <= 0) {
-		return 0
-	} else if (size > 0 && size <= 1) {
-		const [fv] = costs
-		const pv = fv * (1 / Math.pow(1 + rate / 100, period))
-		return pv
-	} else if (size > 1 && size <= 2) {
-		const fv = costs[0] + costs[1] //compute for PV
-		const pv = fv * (1 / Math.pow(1 + rate / 100, period))
-		return pv
-	} else {
-		const [initial] = costs.splice(0, 1) //returns element 0 & mutates array
-		const npv = finance.NPV.apply(null, [rate / 2, 0, ...costs])
-		const fv = initial + npv
-		const pv = fv * (1 / Math.pow(1 + rate / 100, period))
-		return pv
-	}
 }

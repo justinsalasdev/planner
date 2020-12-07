@@ -1,4 +1,4 @@
-const costArray = [
+const annualExpenses = [
 	119520,
 	123105.6,
 	69510.168,
@@ -37,4 +37,4 @@ const costArray = [
 	116831.5691
 ]
 
-module.exports = costArray
+module.exports = annualExpenses
