@@ -1,7 +1,5 @@
-const Finance = require("financejs")
 const partitionCosts = require("./partitionCosts")
 const computePV2 = require("./computePV2")
-const finance = new Finance()
 const {
 	equityRate,
 	proRate,
